@@ -3,36 +3,24 @@ import React, { Component } from 'react';
 // Shield component - represents a single svg shield
 export default class Shield extends Component {
   render() {
-    let frameColor = colors[Math.floor(Math.random() * colors.length)];
-    while (frameColor.value == this.props.color.value) {
-      let frameColor = colors[Math.floor(Math.random() * colors.length)];
-    }
-    const dispo = dispos[Math.floor(Math.random() * dispos.length)];
-    const firstColor = colors[Math.floor(Math.random() * colors.length)];
-    const secondColor = colors[Math.floor(Math.random() * colors.length)];
-    const thirdColor = colors[Math.floor(Math.random() * colors.length)];
-    const frame = frames[Math.floor(Math.random() * frames.length)];
-    const firstMeuble = meubles[Math.floor(Math.random() * meubles.length)];
-    const secondMeuble = meubles[Math.floor(Math.random() * meubles.length)];
-    const thirdMeuble = meubles[Math.floor(Math.random() * meubles.length)];
     return (
-      <svg width="30%" viewBox="-31 -31 62 68">
-        <path d={shield} style={{fill: this.props.color, strokeWidth: '0'}} />
-        <path d={frame.path}  style={{fill: frameColor.value}} />
-        <path d={firstMeuble.path}
-          style={{fill: firstColor.value, stroke: firstColor.comp, strokeWidth: '0.5'}}
-          transform={dispo.firstTransform}
+      <svg viewBox="-31 -31 62 68">
+        <path d={shield} style={{fill: this.props.shieldColor.value, strokeWidth: '0'}} />
+        <path d={this.props.frame.path}  style={{fill: this.props.frameColor.value}} />
+        <path d={this.props.firstMeuble.path}
+          style={{fill: this.props.firstColor.value, stroke: this.props.firstColor.comp, strokeWidth: '0.5'}}
+          transform={this.props.dispo.firstTransform}
         />
-        { (dispo.secondTransform != '') ?
-          <path d={secondMeuble.path}
-            style={{fill: secondColor.value, stroke: secondColor.comp, strokeWidth: '0.5'}}
-            transform={dispo.secondTransform}
+        { (this.props.dispo.secondTransform != '') ?
+          <path d={this.props.secondMeuble.path}
+            style={{fill: this.props.secondColor.value, stroke: this.props.secondColor.comp, strokeWidth: '0.5'}}
+            transform={this.props.dispo.secondTransform}
           /> : <path d='' />
         }
-        { (dispo.thirdTransform != '') ?
-          <path d={thirdMeuble.path}
-            style={{fill: thirdColor.value, stroke: thirdColor.comp, strokeWidth: '0.5'}}
-            transform={dispo.thirdTransform}
+        { (this.props.dispo.thirdTransform != '') ?
+          <path d={this.props.thirdMeuble.path}
+            style={{fill: this.props.thirdColor.value, stroke: this.props.thirdColor.comp, strokeWidth: '0.5'}}
+            transform={this.props.dispo.thirdTransform}
           /> : <path d='' />
         }
         < path d={shield}

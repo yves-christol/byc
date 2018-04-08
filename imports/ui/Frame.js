@@ -1,19 +1,23 @@
 import React, { Component } from 'react';
+import Shield from './Shield.js';
 
 // Shield component - represents a single svg shield
 export default class Frame extends Component {
   render() {
-    const shieldColor = colors[1];
-    const frameColor = colors[0];
     return (
       <button onClick={() => props.onClick(this.props.frame)} style={{height: '60px', width: '60px'}}>
-        <svg viewBox="-31 -31 62 68">
-          <path d={shield} style={{fill: shieldColor.value, strokeWidth: '0'}} />
-          <path d={this.props.frame.path}  style={{fill: frameColor.value}} />
-          < path d={shield}
-            style={{fill: 'transparent', stroke: shieldColor.comp, strokeWidth: '0.5'}}
-          />
-        </svg>
+        <Shield
+          shieldColor={colors[1]}
+          frame={this.props.frame}
+          frameColor={colors[0]}
+          dispo={dispos[0]}
+          firstMeuble={meubles[0]}
+          firstColor={colors[0]}
+          secondMeuble={meubles[0]}
+          secondColor={colors[0]}
+          thirdMeuble={meubles[0]}
+          thirdColor={colors[0]}
+        />
       </button>
     );
   }
