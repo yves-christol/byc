@@ -1,22 +1,24 @@
 import React, { Component } from 'react';
 import Shield from './Shield.js';
 
-// Shield component - represents a single svg shield
 export default class Dispo extends Component {
   render() {
     return (
-      <button onClick={() => props.onClick(this.props.frame)} style={{height: '60px', width: '60px'}}>
+      <button
+        onClick={() => this.props.onClick(this.props.dispo)}
+        className={this.props.selected ? 'shieldButtonSelected' : 'shieldButton'}
+      >
         <Shield
-          shieldColor={colors[1]}
-          frame={frames[0]}
-          frameColor={colors[1]}
+          shieldColor='argent'
+          frame='none'
+          frameColor='sable'
           dispo={this.props.dispo}
-          firstMeuble={meubles[1]}
-          firstColor={colors[0]}
-          secondMeuble={meubles[1]}
-          secondColor={colors[0]}
-          thirdMeuble={meubles[1]}
-          thirdColor={colors[0]}
+          first='rond'
+          firstColor='sable'
+          second='rond'
+          secondColor='sable'
+          third='rond'
+          thirdColor='sable'
         />
       </button>
     );

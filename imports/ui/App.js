@@ -8,33 +8,14 @@ import Shield from './Shield.js';
 
 // App component - represents the whole app
 export default class App extends Component {
-  renderShields() {
-    const shieldColor = colors[Math.floor(Math.random() * colors.length)];
-    let frameColor = colors[Math.floor(Math.random() * colors.length)];
-    while (frameColor.value == shieldColor.value) {
-      let frameColor = colors[Math.floor(Math.random() * colors.length)];
-    }
-    const dispo = dispos[Math.floor(Math.random() * dispos.length)];
-    const firstColor = colors[Math.floor(Math.random() * colors.length)];
-    const secondColor = colors[Math.floor(Math.random() * colors.length)];
-    const thirdColor = colors[Math.floor(Math.random() * colors.length)];
-    const frame = frames[Math.floor(Math.random() * frames.length)];
-    const firstMeuble = meubles[Math.floor(Math.random() * meubles.length)];
-    const secondMeuble = meubles[Math.floor(Math.random() * meubles.length)];
-    const thirdMeuble = meubles[Math.floor(Math.random() * meubles.length)];
-    return ( <div width="30%">
-      <Shield
-        shieldColor={shieldColor}
-        frame={frame}
-        frameColor={frameColor}
-        dispo={dispo}
-        firstMeuble={firstMeuble}
-        firstColor={firstColor}
-        secondMeuble={secondMeuble}
-        secondColor={secondColor}
-        thirdMeuble={thirdMeuble}
-        thirdColor={thirdColor}
-     /> </div>);
+  constructor(props) {
+    super(props);
+    this.state = Shield.getRandomShield();
+    this.pick = this.pick.bind(this);
+  }
+
+  pick(attribute, value) {
+    this.setState({[attribute]: value});
   }
 
   render() {
@@ -43,17 +24,80 @@ export default class App extends Component {
         <header>
           <h1>Blason Your Character</h1>
         </header>
-
-        <ColorPicker />
-        <FramePicker />
-        <ColorPicker />
-        <DispoPicker />
-        <MeublePicker />
-        <ColorPicker />
-
-        <ul>
-          {this.renderShields()}
-        </ul>
+        <div className="row">
+          <div className="column">
+            <Shield
+              shieldColor={this.state.shieldColor}
+              frame={this.state.frame}
+              frameColor={this.state.frameColor}
+              dispo={this.state.dispo}
+              first={this.state.first}
+              firstColor={this.state.firstColor}
+              second={this.state.second}
+              secondColor={this.state.secondColor}
+              third={this.state.third}
+              thirdColor={this.state.thirdColor}
+            />
+          </div>
+          <div className="column">
+            <h2> Main color </h2>
+            <ColorPicker
+              selected={this.state.shieldColor}
+              action={this.pick}
+              attribute='shieldColor'
+            />
+          </div>
+          <div className="column">
+            <DispoPicker
+              selected={this.state.dispo}
+              action={this.pick}
+              attribute='dispo'
+            />
+          </div>
+          <header>
+            <h2> Frame </h2>
+          </header>
+          <FramePicker
+            selected={this.state.frame}
+            action={this.pick}
+            attribute='frame'
+          />
+          <ColorPicker
+            selected={this.state.frameColor}
+            action={this.pick}
+            attribute='frameColor'
+          />
+          <MeublePicker
+            selected={this.state.first}
+            action={this.pick}
+            attribute='first'
+          />
+          <ColorPicker
+            selected={this.state.firstColor}
+            action={this.pick}
+            attribute='firstColor'
+          />
+          <MeublePicker
+            selected={this.state.second}
+            action={this.pick}
+            attribute='second'
+          />
+          <ColorPicker
+            selected={this.state.secondColor}
+            action={this.pick}
+            attribute='secondColor'
+          />
+          <MeublePicker
+            selected={this.state.third}
+            action={this.pick}
+            attribute='third'
+          />
+          <ColorPicker
+            selected={this.state.thirdColor}
+            action={this.pick}
+            attribute='thirdColor'
+          />
+        </div>
       </div>
     );
   }

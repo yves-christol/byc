@@ -1,26 +1,19 @@
 import React, { Component } from 'react';
 
+import Picker from './Picker.js';
 import Dispo from './Dispo.js';
+import { getDispos } from './shield/dispos.js';
 
 // App component - represents the whole app
-export default class DispoPicker extends Component {
-  renderDispos() {
-    return dispos.map((dispo, idx) => (
-      <Dispo key={idx.toString()} dispo={dispo} />
+export default class DispoPicker extends Picker {
+  renderList() {
+    return getDispos().map((dispo, idx) => (
+      <Dispo
+        key={dispo[0]}
+        dispo={dispo[0]}
+        onClick={this.pick}
+        selected={dispo[0] === this.props.selected}
+      />
     ));
-  }
-
-  render() {
-    return (
-      <div className="container">
-        <header>
-          <h2>Pick a dispo</h2>
-        </header>
-
-        <ul>
-          {this.renderDispos()}
-        </ul>
-      </div>
-    );
   }
 }

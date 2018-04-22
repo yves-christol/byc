@@ -1,1 +1,21 @@
-/* CSS declarations go here */
+.column {
+  float: left;
+  width: 33.33%;
+}
+/* Clear floats after the columns */
+.row:after {
+  content: "";
+  display: table;
+  clear: both;
+}
+
+/* button for all pickers */
+.shieldButton {
+  width: 60px;
+  height: 60px;
+}
+.shieldButtonSelected {
+  width: 60px;
+  height: 60px;
+  background: #FF0000;
+}

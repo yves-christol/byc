@@ -1,26 +1,18 @@
 import React, { Component } from 'react';
 
+import Picker from './Picker.js';
 import Meuble from './Meuble.js';
+import { getMeubles } from './shield/meubles.js';
 
-// App component - represents the whole app
-export default class MeublePicker extends Component {
-  renderMeubles() {
-    return meubles.map((meuble, idx) => (
-      <Meuble key={idx.toString()} meuble={meuble} />
+export default class MeublePicker extends Picker {
+  renderList() {
+    return getMeubles().map((meuble, idx) => (
+      <Meuble
+        key={meuble[0]}
+        meuble={meuble[0]}
+        onClick={this.pick}
+        selected={meuble[0] === this.props.selected}
+      />
     ));
-  }
-
-  render() {
-    return (
-      <div className="container">
-        <header>
-          <h2>Pick a meuble</h2>
-        </header>
-
-        <ul>
-          {this.renderMeubles()}
-        </ul>
-      </div>
-    );
   }
 }
