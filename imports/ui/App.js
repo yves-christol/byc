@@ -12,10 +12,15 @@ export default class App extends Component {
     super(props);
     this.state = Shield.getRandomShield();
     this.pick = this.pick.bind(this);
+    this.addShieldInCollection = this.addShieldInCollection.bind(this);
   }
 
   pick(attribute, value) {
     this.setState({[attribute]: value});
+  }
+
+  addShieldInCollection(event) {
+
   }
 
   render() {
@@ -40,7 +45,6 @@ export default class App extends Component {
         </div>
 
         <div className='box line'>
-
           Shield Color
           <ColorPicker
             selected={this.state.shieldColor}
@@ -64,6 +68,15 @@ export default class App extends Component {
             action={this.pick}
             attribute='dispo'
           />
+          Add this shield to collection
+          <button
+            onClick={this.addShieldInCollection}
+            className='save'
+          >
+            Add
+          </button>
+        </div>
+        <div className='box line2'>
           First Meuble
           <MeublePicker
             selected={this.state.first}
