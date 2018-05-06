@@ -6,14 +6,21 @@ import { getDispos } from './shield/dispos.js';
 
 // App component - represents the whole app
 export default class DispoPicker extends Picker {
-  renderList() {
-    return getDispos().map((dispo, idx) => (
+
+  renderOne(dis) {
+    return (
       <Dispo
-        key={dispo[0]}
-        dispo={dispo[0]}
+        key={dis}
+        dispo={dis}
         onClick={this.pick}
-        selected={dispo[0] === this.props.selected}
+        selected={dis === this.props.selected}
       />
-    ));
+    );
+  }
+
+  renderList() {
+    return getDispos().map(
+      (dispo) => (this.renderOne(dispo[0]))
+    );
   }
 }

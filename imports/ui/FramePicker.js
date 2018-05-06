@@ -6,14 +6,21 @@ import { getFrames } from './shield/frames.js';
 
 // App component - represents the whole app
 export default class FramePicker extends Picker {
-  renderList() {
-    return getFrames().map((frame, idx) => (
+
+  renderOne(fra) {
+    return (
       <Frame
-        key={frame[0]}
-        frame={frame[0]}
+        key={fra}
+        frame={fra}
         onClick={this.pick}
-        selected={frame[0] === this.props.selected}
+        selected={fra === this.props.selected}
       />
-    ));
+    );
+  }
+
+  renderList() {
+    return getFrames().map(
+      (frame, idx) => (this.renderOne(frame[0]))
+    );
   }
 }

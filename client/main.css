@@ -1,12 +1,36 @@
-.column {
-  float: left;
-  width: 33.33%;
+.wrapper {
+  display: grid;
+  grid-gap: 10px;
+  grid-template-columns: 40% 1fr;
+  grid-template-rows: repeat(9 60px);
+  background:
+  linear-gradient(45deg, hsla(352, 96%, 45%, 1) 0%, hsla(352, 96%, 45%, 0) 70%),
+  linear-gradient(135deg, hsla(253, 95%, 42%, 1) 10%, hsla(253, 95%, 42%, 0) 80%),
+  linear-gradient(225deg, hsla(179, 91%, 45%, 1) 10%, hsla(179, 91%, 45%, 0) 80%),
+  linear-gradient(315deg, hsla(119, 96%, 49%, 1) 100%, hsla(119, 96%, 49%, 0) 70%);
+  color: #444;
 }
-/* Clear floats after the columns */
-.row:after {
-  content: "";
-  display: table;
-  clear: both;
+
+.box {
+  background-color: transparent;
+  color: #fff;
+  border-radius: 5px;
+  padding: 20px;
+  font-size: 150%;
+}
+
+.header {
+  grid-column: 1 / span 2;
+  grid-row: 1;
+}
+
+.shield {
+  grid-column: 1;
+  grid-row: 2 / span 4;
+}
+
+.line {
+  grid-column: 2;
 }
 
 /* button for all pickers */
@@ -17,5 +41,5 @@
 .shieldButtonSelected {
   width: 60px;
   height: 60px;
-  background: #FF0000;
+  background: #999999;
 }

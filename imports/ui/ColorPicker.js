@@ -6,14 +6,21 @@ import Color from './Color.js';
 import { getColors } from './shield/colors.js';
 
 export default class ColorPicker extends Picker {
-  renderList() {
-    return getColors().map((color, idx) => (
+
+  renderOne(col) {
+    return (
       <Color
-        key={color[0]}
-        color={color[0]}
+        key={col}
+        color={col}
         onClick={this.pick}
-        selected={color[0] === this.props.selected}
+        selected={col === this.props.selected}
       />
-    ));
+    );
+  }
+
+  renderList() {
+    return getColors().map(
+      (color) => (this.renderOne(color[0]))
+    );
   }
 }

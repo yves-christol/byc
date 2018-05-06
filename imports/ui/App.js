@@ -20,12 +20,11 @@ export default class App extends Component {
 
   render() {
     return (
-      <div className="container">
-        <header>
+      <div className='wrapper'>
+        <div className='box header'>
           <h1>Blason Your Character</h1>
-        </header>
-        <div className="row">
-          <div className="column">
+        </div>
+        <div className='box shield'>
             <Shield
               shieldColor={this.state.shieldColor}
               frame={this.state.frame}
@@ -38,25 +37,17 @@ export default class App extends Component {
               third={this.state.third}
               thirdColor={this.state.thirdColor}
             />
-          </div>
-          <div className="column">
-            <h2> Main color </h2>
-            <ColorPicker
-              selected={this.state.shieldColor}
-              action={this.pick}
-              attribute='shieldColor'
-            />
-          </div>
-          <div className="column">
-            <DispoPicker
-              selected={this.state.dispo}
-              action={this.pick}
-              attribute='dispo'
-            />
-          </div>
-          <header>
-            <h2> Frame </h2>
-          </header>
+        </div>
+
+        <div className='box line'>
+
+          Shield Color
+          <ColorPicker
+            selected={this.state.shieldColor}
+            action={this.pick}
+            attribute='shieldColor'
+          />
+          Frame
           <FramePicker
             selected={this.state.frame}
             action={this.pick}
@@ -67,6 +58,13 @@ export default class App extends Component {
             action={this.pick}
             attribute='frameColor'
           />
+          Dispo
+          <DispoPicker
+            selected={this.state.dispo}
+            action={this.pick}
+            attribute='dispo'
+          />
+          First Meuble
           <MeublePicker
             selected={this.state.first}
             action={this.pick}
@@ -77,6 +75,7 @@ export default class App extends Component {
             action={this.pick}
             attribute='firstColor'
           />
+          Second Meuble
           <MeublePicker
             selected={this.state.second}
             action={this.pick}
@@ -87,6 +86,7 @@ export default class App extends Component {
             action={this.pick}
             attribute='secondColor'
           />
+          Third Meuble
           <MeublePicker
             selected={this.state.third}
             action={this.pick}

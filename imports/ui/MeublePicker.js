@@ -5,14 +5,21 @@ import Meuble from './Meuble.js';
 import { getMeubles } from './shield/meubles.js';
 
 export default class MeublePicker extends Picker {
-  renderList() {
-    return getMeubles().map((meuble, idx) => (
+
+  renderOne(meu) {
+    return (
       <Meuble
-        key={meuble[0]}
-        meuble={meuble[0]}
+        key={meu}
+        meuble={meu}
         onClick={this.pick}
-        selected={meuble[0] === this.props.selected}
+        selected={meu === this.props.selected}
       />
-    ));
+    );
+  }
+
+  renderList() {
+    return getMeubles().map(
+      (meuble) => (this.renderOne(meuble[0]))
+    );
   }
 }

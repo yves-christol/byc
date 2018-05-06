@@ -31,7 +31,7 @@ export default class Shield extends Component {
          secondColor: secondColor,
          third: third,
          thirdColor: thirdColor
-    }
+    };
   }
 
   render() {
